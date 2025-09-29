@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaura</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-calculator"></i> Calculadora para insumos - Gastronomia</h1>
+                <p>Calcule o preço de ingredientes aqui embaixo</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <h2><i class="fas fa-weight"></i> Cálculo por Grama</h2>
+                    <form id="priceCalculator" class="calculator-form">
+                        <div class="input-group">
+                            <label for="ingredientName">Nome do Ingrediente</label>
+                            <input type="text" id="ingredientName" placeholder="Ex: Chocolate, Açúcar, Farinha..." required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="unitType">Tipo de Medida</label>
+                            <select id="unitType" class="unit-select">
+                                <option value="kg">Por Quilo (kg)</option>
+                                <option value="litro">Por Litro (L)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="pricePerUnit" id="priceLabel">Preço por Quilo (R$)</label>
+                                <input type="number" id="pricePerUnit" step="0.01" min="0" placeholder="Ex: 10,00" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="quantityGrams" id="quantityLabel">Quantidade em Gramas</label>
+                                <input type="number" id="quantityGrams" step="1" min="1" placeholder="Ex: 100" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="calculate-btn">
+                                <i class="fas fa-calculator"></i> Calcular Preço
+                            </button>
+                            <button type="button" id="saveIngredient" class="save-btn" style="display: none;">
+                                <i class="fas fa-bookmark"></i> Salvar Ingrediente
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="result" class="result-section" style="display: none;">
+                        <div class="result-card">
+                            <h3><i class="fas fa-check-circle"></i> Resultado</h3>
+                            <div class="result-content">
+                                <div class="result-item">
+                                    <span class="label">Ingrediente:</span>
+                                    <span class="value" id="resultIngredient"></span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label" id="resultPriceLabel">Preço por kg:</span>
+                                    <span class="value" id="resultPricePerUnit"></span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">Quantidade:</span>
+                                    <span class="value" id="resultQuantity"></span>
+                                </div>
+                                <div class="result-item highlight">
+                                    <span class="label">Preço final:</span>
+                                    <span class="value" id="resultFinalPrice"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examples-section">
+                <h3><i class="fas fa-bookmark"></i> Ingredientes Salvos</h3>
+                <p class="section-description">Clique em um ingrediente para usar como base. Os preços são atualizados automaticamente quando você calcula.</p>
+                <div id="savedIngredients" class="examples-grid">
+                    <!-- Ingredientes serão carregados dinamicamente -->
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3><i class="fas fa-history"></i> Histórico de Cálculos</h3>
+                <div id="historyList" class="history-list">
+                    <p class="no-history">Nenhum cálculo realizado ainda</p>
+                </div>
+                <button id="clearHistory" class="clear-btn" style="display: none;">
+                    <i class="fas fa-trash"></i> Limpar Histórico
+                </button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Calculadora de Preços - Gastronomia. Desenvolvido para facilitar o cálculo de custos dos insumos.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
